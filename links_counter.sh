@@ -20,7 +20,7 @@ else
     echo "The curl command failed with status: $CURL_STATUS \n Is this URL avalible?"
     exit 1
   else
-    lynx -pauth='a.prososov:!Qq112345' --dump --listonly http://$1 > /tmp/links_counter.tmp
+    lynx --dump --listonly http://$1 > /tmp/links_counter.tmp
     echo "For URL" $1 
     echo "Number of internal links is:" `cat /tmp/links_counter.tmp| grep -o "http.*"| grep -E "(/$1/|www.$1/)"| wc -l`
     echo "Number of external links is:" `cat /tmp/links_counter.tmp| grep -o "http.*"| grep -v "$1/"| wc -l`
